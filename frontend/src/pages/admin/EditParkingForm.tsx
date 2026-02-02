@@ -72,7 +72,7 @@ export const EditParkingForm = () => {
       streetNumber: formData.get("streetNumber")?.toString()!,
       lat: parseNumber(formData.get("lat")) ?? 0,
       lon: parseNumber(formData.get("lon")) ?? 0,
-      mainPhotoId: formData.get("streetName")?.toString()!,
+      mainPhotoId: formData.get("imgUrl")?.toString()!,
     };
 
     try {
@@ -224,6 +224,18 @@ export const EditParkingForm = () => {
               style={styleInput}
               id="lon"
               name="lon"
+            />
+            <label
+              style={{ display: "flex", flexDirection: "column", gap: "6px" }}
+            >
+              Photo URL
+            </label>
+            <input
+              defaultValue={"*png, *jpg"}
+              type="text"
+              style={styleInput}
+              id="imgUrl"
+              name="imgUrl"
             />
             <div
               className="actions"
