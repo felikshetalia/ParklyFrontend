@@ -7,8 +7,12 @@ import type {
   UpdateSpotRequest,
 } from "../../model/dto/admin_inventory_dto";
 const API = import.meta.env.VITE_API_BASE_URL;
-export const getParkingsList = async (): Promise<ParkingResponse[]> => {
-  const res = await fetch(`${API}/api/parkings`);
+export const getParkingsList = async (
+  startDate: string,
+  endDate: string,
+): Promise<ParkingResponse[]> => {
+  const params = new URLSearchParams({ startDate, endDate });
+  const res = await fetch(`${API}/api/parkings?${params.toString()}`);
   if (!res.ok) {
     const err = await res.text();
     throw new Error(
