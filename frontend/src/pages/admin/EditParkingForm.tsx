@@ -18,6 +18,9 @@ const styleInput = {
 };
 
 export const EditParkingForm = () => {
+  const startDate = new Date("2026-01-01T00:00:00Z").toISOString();
+  const endDate = new Date("2026-02-02T00:00:00Z").toISOString();
+
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [currentParking, setCurrentParking] = useState<ParkingResponse | null>(
@@ -33,7 +36,7 @@ export const EditParkingForm = () => {
     let mounted = true;
     (async () => {
       try {
-        const parkings = await getParkingsList();
+        const parkings = await getParkingsList(startDate, endDate);
         const found = parkings.find((p) => p.id === parkingId) ?? null;
         if (mounted) setCurrentParking(found);
       } catch (err) {
