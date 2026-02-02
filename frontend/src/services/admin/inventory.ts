@@ -6,9 +6,9 @@ import type {
   UpdateParkingRequest,
   UpdateSpotRequest,
 } from "../../model/dto/admin_inventory_dto";
-
+const API = import.meta.env.VITE_API_BASE_URL;
 export const getParkingsList = async (): Promise<ParkingResponse[]> => {
-  const res = await fetch(`/api/admin/parkings`);
+  const res = await fetch(`${API}/api/admin/parkings`);
   if (!res.ok) {
     const err = await res.text();
     throw new Error(
@@ -19,7 +19,7 @@ export const getParkingsList = async (): Promise<ParkingResponse[]> => {
 };
 
 export const getParkingSpots = async (id: string): Promise<SpotResponse[]> => {
-  const res = await fetch(`/api/admin/parkings/${id}/spots`);
+  const res = await fetch(`${API}/api/admin/parkings/${id}/spots`);
   if (!res.ok) {
     const err = await res.text();
     throw new Error(`Failed to fetch parking spots (${res.status}): ${err}`);
@@ -28,7 +28,7 @@ export const getParkingSpots = async (id: string): Promise<SpotResponse[]> => {
 };
 
 export const deleteParkingSpot = async (id: string): Promise<void> => {
-  const res = await fetch(`/api/admin/spots/${id}`, {
+  const res = await fetch(`${API}/api/admin/spots/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const addParkingSpot = async (
   parkingId: string,
   body: CreateSpotRequest,
 ): Promise<void> => {
-  const rep = await fetch(`/api/admin/parkings/${parkingId}/spots`, {
+  const rep = await fetch(`${API}/api/admin/parkings/${parkingId}/spots`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export const updateParkingSpot = async (
   spotId: string,
   body: UpdateSpotRequest,
 ): Promise<void> => {
-  const rep = await fetch(`/api/admin/spots/${spotId}`, {
+  const rep = await fetch(`${API}/api/admin/spots/${spotId}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export const updateParkingSpot = async (
 export const createParkingFacility = async (
   body: CreateParkingRequest,
 ): Promise<void> => {
-  const rep = await fetch(`/api/admin/parkings`, {
+  const rep = await fetch(`${API}/api/admin/parkings`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export const updateParkingFacility = async (
   parkingId: string,
   body: UpdateParkingRequest,
 ): Promise<void> => {
-  const rep = await fetch(`/api/admin/parkings/${parkingId}`, {
+  const rep = await fetch(`${API}/api/admin/parkings/${parkingId}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

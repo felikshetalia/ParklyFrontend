@@ -7,6 +7,7 @@ type GetRevenueReportProps = {
   start: string;
   end: string;
 };
+const API = import.meta.env.VITE_API_BASE_URL;
 
 export const getRevenue = async (
   props: GetRevenueReportProps,
@@ -15,7 +16,9 @@ export const getRevenue = async (
     start: props.start,
     end: props.end,
   });
-  const res = await fetch(`/api/admin/reports/revenue?${params.toString()}`);
+  const res = await fetch(
+    `${API}/api/admin/reports/revenue?${params.toString()}`,
+  );
   if (!res.ok) {
     const err = await res.text();
     throw new Error(`Failed to fetch revenue report (${res.status}): ${err}`);
@@ -46,7 +49,7 @@ export const getBookingsPaginated = async ({
   params.set("end", end!);
   if (search) params.set("search", search);
 
-  const res = await fetch(`/api/admin/bookings?${params.toString()}`);
+  const res = await fetch(`${API}/api/admin/bookings?${params.toString()}`);
   if (!res.ok) {
     const err = await res.text();
     throw new Error(`Failed to fetch bookings (${res.status}): ${err}`);
