@@ -5,8 +5,8 @@ import { getParkingsList } from "../../services/admin/inventory";
 import { BiSolidPencil } from "react-icons/bi";
 
 export default function ParkingsListPage() {
-  const startDate = new Date("2026-01-01T00:00:00Z").toISOString();
-  const endDate = new Date("2026-02-02T00:00:00Z").toISOString();
+  const startDate = new Date("2030-01-01T00:00:00Z").toISOString();
+  const endDate = new Date("2030-02-02T00:00:00Z").toISOString();
 
   const [parkingList, setParkingList] = useState<ParkingResponse[]>([]);
   const navigate = useNavigate();

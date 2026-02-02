@@ -18,8 +18,8 @@ const styleInput = {
 };
 
 export const EditParkingForm = () => {
-  const startDate = new Date("2026-01-01T00:00:00Z").toISOString();
-  const endDate = new Date("2026-02-02T00:00:00Z").toISOString();
+  const startDate = new Date("2030-01-01T00:00:00Z").toISOString();
+  const endDate = new Date("2030-02-02T00:00:00Z").toISOString();
 
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
