@@ -7,7 +7,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://parklyreact.azurewebsites.net/",
+        target: "http://localhost:8080",
+        // target: "https://parklyreact.azurewebsites.net/",
         changeOrigin: true,
       },
     },
