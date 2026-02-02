@@ -8,7 +8,7 @@ import type {
 } from "../../model/dto/admin_inventory_dto";
 const API = import.meta.env.VITE_API_BASE_URL;
 export const getParkingsList = async (): Promise<ParkingResponse[]> => {
-  const res = await fetch(`${API}/api/admin/parkings`);
+  const res = await fetch(`${API}/api/parkings`);
   if (!res.ok) {
     const err = await res.text();
     throw new Error(
