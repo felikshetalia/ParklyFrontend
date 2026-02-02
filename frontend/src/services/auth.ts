@@ -1,8 +1,8 @@
 import type { AuthResponse, LoginRequest } from "../model/dto/auth_dto";
-
+const API = import.meta.env.VITE_API_BASE_URL;
 export const loginPost = async (body: LoginRequest): Promise<AuthResponse> => {
   console.log("sending POST /api/auth/login", body);
-  const res = await fetch("/api/auth/login", {
+  const res = await fetch(`${API}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
